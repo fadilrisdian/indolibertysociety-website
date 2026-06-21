@@ -19,8 +19,62 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta',
 })
 
+
 export const metadata: Metadata = {
-  title: 'Indonesian Liberty Society — Merdeka, Bebas, Sejahtera',
+  metadataBase: new URL('https://indoliberty.site'),
+  title: {
+    default: 'Indonesian Liberty Society — Merdeka, Bebas, Sejahtera',
+    template: '%s | Indonesian Liberty Society',
+  },
+  description: 'Komunitas pemikiran klasik liberal dan libertarian di Indonesia. Mempromosikan kebebasan individu, pasar bebas, pemerintahan terbatas, dan supremasi hukum untuk mewujudkan Indonesia yang merdeka, bebas, dan sejahtera.',
+  keywords: [
+    'Indonesian Liberty Society',
+    'ILS',
+    'libertarian Indonesia',
+    'klasik liberal Indonesia',
+    'kebebasan individu',
+    'pasar bebas',
+    'pemerintahan terbatas',
+    'komunitas libertarian indonesia',
+    'ekonomi pasar',
+    'hak individu'
+  ],
+  authors: [{ name: 'Indonesian Liberty Society', url: 'https://indoliberty.site' }],
+  creator: 'Indonesian Liberty Society',
+  publisher: 'Indonesian Liberty Society',
+  openGraph: {
+    type: 'website',
+    locale: 'id_ID',
+    url: 'https://indoliberty.site',
+    title: 'Indonesian Liberty Society — Merdeka, Bebas, Sejahtera',
+    description: 'Komunitas pemikiran klasik liberal dan libertarian di Indonesia. Mempromosikan kebebasan individu, pasar bebas, pemerintahan terbatas, dan supremasi hukum.',
+    siteName: 'Indonesian Liberty Society',
+    images: [
+      {
+        url: '/logo.png',
+        width: 800,
+        height: 800,
+        alt: 'Indonesian Liberty Society Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Indonesian Liberty Society — Merdeka, Bebas, Sejahtera',
+    description: 'Komunitas pemikiran klasik liberal dan libertarian di Indonesia. Mempromosikan kebebasan individu, pasar bebas, pemerintahan terbatas, dan supremasi hukum.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({
