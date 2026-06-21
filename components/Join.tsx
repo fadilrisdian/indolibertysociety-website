@@ -1,5 +1,39 @@
+'use client'
+
+import { useState } from 'react'
 
 export default function Join() {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setMessage(null)
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setMessage({ type: 'success', text: data.message })
+        setEmail('')
+      } else {
+        setMessage({ type: 'error', text: data.error })
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Terjadi kesalahan. Silakan coba lagi.' })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section className="join" id="join">
       <div className="section-label">Bergabung</div>
@@ -10,23 +44,48 @@ export default function Join() {
         Langganan newsletter kami dan dapatkan analisis kebijakan terbaru,
         jadwal diskusi, dan bacaan terpilih — langsung ke kotak masuk kamu.
       </p>
-      <div className="join-form">
+      
+      <form onSubmit={handleSubmit} className="join-form">
         <input
           type="email"
           className="join-input"
           placeholder="Masukkan email kamu..."
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled={loading}
         />
-        <a
-          href="#"
+        <button
+          type="submit"
           className="btn-gold"
+          disabled={loading}
           style={{
             clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)',
             whiteSpace: 'nowrap',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            opacity: loading ? 0.6 : 1,
           }}
         >
-          Langganan Gratis
-        </a>
-      </div>
+          {loading ? 'Memproses...' : 'Langganan Gratis'}
+        </button>
+      </form>
+
+      {message && (
+        <div
+          style={{
+            marginTop: '12px',
+            padding: '10px 16px',
+            borderRadius: '4px',
+            backgroundColor: message.type === 'success' ? '#d4edda' : '#f8d7da',
+            color: message.type === 'success' ? '#155724' : '#721c24',
+            fontSize: '14px',
+            textAlign: 'center',
+          }}
+        >
+          {message.text}
+        </div>
+      )}
+
       <div className="join-socials">
         <a href="https://instagram.com/indoliberty" target="_blank" rel="noopener noreferrer" className="soc">
           <svg
