@@ -1,12 +1,17 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
@@ -31,7 +36,7 @@ export default function Navbar() {
       </Link>
 
       <button
-        className={`hamburger ${isOpen ? 'active' : ''}`}
+        className={`hamburger ${mounted && isOpen ? 'active' : ''}`}
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
@@ -40,7 +45,7 @@ export default function Navbar() {
         <span></span>
       </button>
 
-      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+      <ul className={`nav-links ${mounted && isOpen ? 'active' : ''}`}>
         <li><a href="#tentang" onClick={closeMenu}>Tentang</a></li>
         <li><Link href="/tulisan" onClick={closeMenu}>Tulisan</Link></li>
         <li><a href="#nilai" onClick={closeMenu}>Nilai</a></li>
