@@ -892,4 +892,75 @@ h1, h2 {
           grid-template-columns: 1fr;
         }
       }
-    
+
+      /* ── TULISAN ── */
+      .tulisan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(250, 250, 247, 0.07);
+      }
+      .tulisan-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px 36px;
+        background: var(--black);
+        text-decoration: none;
+        transition: background 0.2s;
+        min-height: 320px;
+      }
+      .tulisan-card:hover {
+        background: rgba(196, 145, 28, 0.05);
+      }
+      .tulisan-card-inner {
+        flex: 1;
+      }
+      .tulisan-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 28px;
+      }
+      .tulisan-judul {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 1.8vw, 26px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
+      .tulisan-ringkasan {
+        font-size: 14px;
+        line-height: 1.75;
+        color: rgba(250, 250, 247, 0.45);
+      }
+      .tulisan-penulis {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .tulisan-tanggal {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        color: rgba(250, 250, 247, 0.3);
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+      .tulisan-arrow {
+        color: rgba(250, 250, 247, 0.2);
+        font-size: 18px;
+        transition: color 0.2s;
+      }
+      .tulisan-card:hover .tulisan-arrow {
+        color: var(--gold);
+      }
+      @media (max-width: 768px) {
+        .tulisan-grid {
+          grid-template-columns: 1fr;
+        }
+      }

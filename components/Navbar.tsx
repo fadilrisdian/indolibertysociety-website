@@ -25,6 +25,7 @@ export default function Navbar() {
 
       <ul className="nav-links">
         <li><a href="#tentang">Tentang</a></li>
+        <li><Link href="/tulisan">Tulisan</Link></li>
         <li><a href="#nilai">Nilai</a></li>
         <li><a href="#program">Program</a></li>
         <li>
