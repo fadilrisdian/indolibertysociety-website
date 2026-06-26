@@ -105,7 +105,7 @@ export default function Join() {
           </svg>
           Instagram
         </a>
-        <a href="#" className="soc">
+        <a href="https://x.com/indoliberty" target="_blank" rel="noopener noreferrer" className="soc">
           <svg
             className="soc-icon"
             width="14"
@@ -123,7 +123,7 @@ export default function Join() {
           </svg>
           Twitter / X
         </a>
-        <a href="#" className="soc">
+        <a href="https://www.youtube.com/@IndoLiberty" target="_blank" rel="noopener noreferrer" className="soc">
           <svg
             className="soc-icon"
             width="14"
@@ -141,22 +141,6 @@ export default function Join() {
             <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
           </svg>
           YouTube
-        </a>
-        <a href="#" className="soc">
-          <svg
-            className="soc-icon"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
-          </svg>
-          Telegram
         </a>
       </div>
     </section>

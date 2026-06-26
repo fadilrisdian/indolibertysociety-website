@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="ft-col">
         <h4>Tentang</h4>
         <ul>
-          <li><a href="#">Misi & Visi</a></li>
+          <li><a href="/misi-visi">Misi & Visi</a></li>
           <li><a href="#">Tim Kami</a></li>
           <li><a href="#">Sejarah ILS</a></li>
           <li><a href="#">Press Kit</a></li>
