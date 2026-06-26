@@ -37,13 +37,7 @@ export default function Navbar() {
         <span></span>
       </button>
 
-      <ul
-        className={`nav-links ${isOpen ? 'active' : ''}`}
-        style={{
-          maxHeight: isOpen ? '500px' : '0',
-          opacity: isOpen ? 1 : 0,
-        }}
-      >
+      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><a href="#tentang" onClick={() => setIsOpen(false)}>Tentang</a></li>
         <li><Link href="/tulisan" onClick={() => setIsOpen(false)}>Tulisan</Link></li>
         <li><a href="#nilai" onClick={() => setIsOpen(false)}>Nilai</a></li>
