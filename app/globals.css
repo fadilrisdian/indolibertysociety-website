@@ -842,52 +842,72 @@ h1, h2 {
       @media (max-width: 900px) {
         nav {
           padding: 16px 24px;
+          display: flex;
+          align-items: flex-start;
         }
         .hamburger {
           display: flex;
+          z-index: 201;
+          margin-top: 8px;
         }
         .nav-links {
           position: fixed;
-          top: 60px;
+          top: 56px;
           left: 0;
           right: 0;
+          width: 100%;
           background: rgba(12, 12, 12, 0.98);
           backdrop-filter: blur(14px);
           display: flex !important;
-          flex-direction: column;
-          align-items: flex-start !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
           gap: 0 !important;
-          padding: 16px 24px;
+          padding: 0;
           list-style: none;
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.3s ease;
-          z-index: 199;
+          transition: max-height 0.3s ease-in-out;
+          z-index: 150;
+          margin: 0;
         }
         .nav-links.active {
-          max-height: 500px;
-          border-bottom: 1px solid rgba(250, 250, 247, 0.1);
+          max-height: calc(100vh - 56px);
         }
         .nav-links li {
-          padding: 12px 0;
+          padding: 16px 24px;
           border-bottom: 1px solid rgba(250, 250, 247, 0.05);
           width: 100%;
+          margin: 0;
+          list-style: none;
         }
         .nav-links li:last-child {
           border-bottom: none;
         }
         .nav-links a {
           display: block;
-          font-size: 14px;
-          width: 100%;
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
           color: rgba(250, 250, 247, 0.6);
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+        .nav-links a:hover {
+          color: var(--gold);
         }
         .nav-cta {
-          display: inline-block !important;
-          margin-top: 8px;
-          padding: 12px 20px !important;
           background: var(--gold) !important;
           color: var(--black) !important;
+          padding: 10px 16px !important;
+          border-radius: 2px;
+          clip-path: polygon(
+            0 0,
+            calc(100% - 8px) 0,
+            100% 8px,
+            100% 100%,
+            0 100%
+          );
         }
         .hero {
           grid-template-columns: 1fr;
