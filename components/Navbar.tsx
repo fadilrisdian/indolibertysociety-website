@@ -1,10 +1,17 @@
 
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => setIsOpen(!isOpen)
+
+  const closeMenu = () => setIsOpen(false)
+
   return (
     <nav id="nav">
       <Link href="/" className="nav-logo">
@@ -23,13 +30,23 @@ export default function Navbar() {
         </div>
       </Link>
 
-      <ul className="nav-links">
-        <li><a href="#tentang">Tentang</a></li>
-        <li><Link href="/tulisan">Tulisan</Link></li>
-        <li><a href="#nilai">Nilai</a></li>
-        <li><a href="#program">Program</a></li>
+      <button
+        className={`hamburger ${isOpen ? 'active' : ''}`}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+        <li><a href="#tentang" onClick={closeMenu}>Tentang</a></li>
+        <li><Link href="/tulisan" onClick={closeMenu}>Tulisan</Link></li>
+        <li><a href="#nilai" onClick={closeMenu}>Nilai</a></li>
+        <li><a href="#program" onClick={closeMenu}>Program</a></li>
         <li>
-          <a href="#join" className="nav-cta">Bergabung</a>
+          <a href="#join" className="nav-cta" onClick={closeMenu}>Bergabung</a>
         </li>
       </ul>
     </nav>
