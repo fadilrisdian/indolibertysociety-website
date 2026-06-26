@@ -8,14 +8,6 @@ import Image from 'next/image'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
-  const closeMenu = () => {
-    setIsOpen(false)
-  }
-
   return (
     <nav id="nav">
       <Link href="/" className="nav-logo">
@@ -36,7 +28,7 @@ export default function Navbar() {
 
       <button
         className={`hamburger ${isOpen ? 'active' : ''}`}
-        onClick={toggleMenu}
+        onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
         type="button"
       >
@@ -45,13 +37,19 @@ export default function Navbar() {
         <span></span>
       </button>
 
-      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
-        <li><a href="#tentang" onClick={closeMenu}>Tentang</a></li>
-        <li><Link href="/tulisan" onClick={closeMenu}>Tulisan</Link></li>
-        <li><a href="#nilai" onClick={closeMenu}>Nilai</a></li>
-        <li><a href="#program" onClick={closeMenu}>Program</a></li>
+      <ul
+        className={`nav-links ${isOpen ? 'active' : ''}`}
+        style={{
+          maxHeight: isOpen ? '500px' : '0',
+          opacity: isOpen ? 1 : 0,
+        }}
+      >
+        <li><a href="#tentang" onClick={() => setIsOpen(false)}>Tentang</a></li>
+        <li><Link href="/tulisan" onClick={() => setIsOpen(false)}>Tulisan</Link></li>
+        <li><a href="#nilai" onClick={() => setIsOpen(false)}>Nilai</a></li>
+        <li><a href="#program" onClick={() => setIsOpen(false)}>Program</a></li>
         <li>
-          <a href="#join" className="nav-cta" onClick={closeMenu}>Bergabung</a>
+          <a href="#join" className="nav-cta" onClick={() => setIsOpen(false)}>Bergabung</a>
         </li>
       </ul>
     </nav>
